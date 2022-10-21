@@ -7,10 +7,10 @@ sudo mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/sdb
 mkdir pers_disk
 
 # Mount disk
-sudo mount -o discard,defaults /dev/sdb ~/pers_disk
+sudo mount -o discard,defaults /dev/sdb $HOME/pers_disk
 
 # Grant write permissions
-sudo chmod a+w pers_disk
+sudo chmod a+w $HOME/pers_disk
 
 # Backup fstab file
 sudo cp /etc/fstab /etc/fstab.backup
