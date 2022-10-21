@@ -16,4 +16,4 @@ sudo chmod a+w pers_disk
 sudo cp /etc/fstab /etc/fstab.backup
 
 # Add line to fstab file
-echo "UUID=$(blkid -s UUID -o value /dev/sdb) pers_disk ext4 discard,defaults,nofail 0 2" | sudo tee -a /etc/fstab
+echo "UUID=$(blkid -s UUID -o value /dev/sdb) $HOME/pers_disk ext4 discard,defaults,nofail 0 2" | sudo tee -a /etc/fstab
