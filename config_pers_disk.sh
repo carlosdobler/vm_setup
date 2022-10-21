@@ -7,7 +7,7 @@ sudo mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/sdb
 sudo mkdir -p /mnt/pers_disk
 
 # Mount disk
-sudo mount -o discard,defaults /mnt/pers_disk
+sudo mount -o discard,defaults /dev/sdb /mnt/pers_disk
 
 # Grant write permissions
 sudo chmod a+w /mnt/pers_disk
