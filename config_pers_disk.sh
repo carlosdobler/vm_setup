@@ -4,7 +4,7 @@
 sudo mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/sdb
 
 # Create mounting point
-mkdir -p /mnt/pers_disk
+sudo mkdir -p /mnt/pers_disk
 
 # Mount disk
 sudo mount -o discard,defaults /mnt/pers_disk
