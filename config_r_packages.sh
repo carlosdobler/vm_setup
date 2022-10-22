@@ -1,3 +1,3 @@
 #!/bin/bash
 
-Rscript additional_r_packages.R
+Rscript /vm_setup/additional_r_packages.R
