@@ -4,3 +4,9 @@
 2. Configure git: `bash vm_setup/config_git.sh <id (any)>`
 3. Install R packages: `bash vm_setup/config_r_packages.sh`
 4. Configure the persistent disk (format, automatic mount): `bash vm_setup/config_pers_disk.sh`
+5. Authenticate yourself with:
+  ```
+  gcloud auth application-default login
+  gcloud auth login
+  ```
+6. Configure buckets' mount points and alias: `bash vm_setup/config_buckets.sh`. Alias to mount: `mountbuckets`.
