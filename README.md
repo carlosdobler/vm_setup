@@ -10,3 +10,4 @@
   gcloud auth login
   ```
 6. Configure buckets' mount points and alias: `bash vm_setup/config_buckets.sh`. Alias to mount: `mountbuckets`.
+7. Check [here](https://github.com/WoodwellRisk/VM_image/blob/main/users_config.md) for additional config options/steps.
