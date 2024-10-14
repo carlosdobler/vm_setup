@@ -1,4 +1,6 @@
-# Steps to configure:
+This repo contains scripts to finalize the configuration of a Google virtual machine created from a risk-img-4ru image (see [here](image.md) to see how the image was created). 
+
+### Steps to finalize configuration:
 
 1. Clone this repo by running `git clone https://github.com/carlosdobler/vm_setup.git` **in the home directory**.
 2. Configure git: `bash vm_setup/config_git.sh <id (any)>` (e.g. "cdobler-risk-vm-04")
