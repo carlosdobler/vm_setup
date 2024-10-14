@@ -1,4 +1,4 @@
-This repo contains scripts to finalize the configuration of a Google virtual machine created from a `risk-img-4ru` image (see [here](image.md) to see how the image was created). 
+This repo contains scripts to finalize the configuration of a Google virtual machine created from a `risk-img-4ru` image (see [here](image.md) the steps followed to create the image). 
 
 ### Steps to finalize configuration:
 
