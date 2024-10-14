@@ -11,5 +11,5 @@
   gcloud auth login
   ```
 6. Configure buckets' mount points and alias: `bash vm_setup/config_buckets.sh`. Alias to mount: `mountbuckets`.
-7. Configure your account to use RStudio Server: `sudo passed <username>`
+7. Create a password to log into RStudio Server: `sudo passed <username>`
 
