@@ -14,7 +14,7 @@ sudo add-apt-repository -y "deb https://cloud.r-project.org/bin/linux/ubuntu $(l
 
 sudo add-apt-repository -y ppa:c2d4u.team/c2d4u4.0+ # additional R binaries
 
-export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s` # gcsfuse
+export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s` # gcsfuse: https://cloud.google.com/storage/docs/gcsfuse-install
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.asc] https://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/cloud.google.asc
 ```
@@ -37,5 +37,8 @@ wget https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2024.09.0-3
 sudo gdebi rstudio-server-2024.09.0-375-amd64.deb
 rm rstudio-server-2024.09.0-375-amd64.deb
 ```
-
-gcsfuse https://cloud.google.com/storage/docs/gcsfuse-install
+To avoid being logged-off when idle for more than 60 min, run `sudo nano /etc/rstudio/rserver.conf` and add these lines to the file:
+```
+auth-timeout-minutes=0
+auth-stay-signed-in-days=30
+```
