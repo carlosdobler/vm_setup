@@ -13,5 +13,5 @@ This repo contains scripts to finalize the configuration of a Google virtual mac
   gcloud auth login
   ```
 6. Configure buckets' mount points and alias: `bash vm_setup/config_buckets.sh`. Alias to mount: `mountbuckets`.
-7. Create a password to log into RStudio Server: `sudo passed <username>`
+7. Create a password to log into RStudio Server: `sudo passwd <username>`
 
