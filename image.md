@@ -1,11 +1,65 @@
 
 # Image
 
+### Version 1.2
+Boot disk: Ubuntu Minimal 24.04 LTS x86/64; 10 GB  
+Project-wide SSH keys blocked: `Advanced options > Security > Block project-wide SSH keys`
+
+SSH as root (`gcloud compute ssh root@<name_of_instance>`) and run:
+
+```
+# R
+wget https://raw.githubusercontent.com/eddelbuettel/r2u/refs/heads/master/inst/scripts/add_cranapt_noble.sh
+bash add_cranapt_noble.sh
+rm add_cranapt_noble.sh
+
+# ubuntugis
+apt install software-properties-common -y --no-install-recommends # for apt-get-repository
+add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable # spatial libraries
+
+# gcsfuse
+export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s` # gcsfuse: https://cloud.google.com/storage/docs/gcsfuse-install
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.asc] https://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/cloud.google.asc
+
+# qgis
+wget -O /etc/apt/keyrings/qgis-archive-keyring.gpg https://download.qgis.org/downloads/qgis-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/qgis-archive-keyring.gpg] https://qgis.org/ubuntu-ltr $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/qgis.list > /dev/null
+
+```
+
+Update and install:
+```
+apt update && apt upgrade -y
+apt -y --no-install-recommends install build-essential gfortran tasksel nano nethogs libudunits2-dev libgdal-dev libgeos-dev libproj-dev libnetcdf-dev git cdo netcdf-bin r-cran-tidyverse r-cran-devtools r-cran-tidymodels gdebi-core gcsfuse qgis
+
+```
+
+Start R and run:
+```
+install.packages(c("sf", "terra", "stars", "ncmeta", "ncdf4", "cubelyr", "mapview", "tmap", "furrr", "future.apply", "tictoc", "colorspace", "zoo", "patchwork", "PCICt", "reticulate"))
+```
+Exit R
+
+Install RStudio:
+```
+wget https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2024.12.1-563-amd64.deb
+sudo gdebi rstudio-server-2024.12.1-563-amd64.deb
+rm rstudio-server-2024.12.1-563-amd64.deb
+```
+To avoid being logged-off when idle for more than 60 min, run `nano /etc/rstudio/rserver.conf` and add these lines to the file:
+```
+auth-timeout-minutes=0
+auth-stay-signed-in-days=30
+```
+
+-----
+
 ### Version 1.1
 Boot disk: Ubuntu 22.04 LTS x86/64; 10 GB  
 Project-wide SSH keys blocked: `Advanced options > Security > Block project-wide SSH keys`
 
-SSH as root and run:
+SSH as root (`gcloud compute ssh root@<name_of_instance>`) and run:
 ```
 sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable # spatial libraries
 
