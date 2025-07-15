@@ -7,7 +7,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 # Install the cdsapi package
-pip install cdsapi
+#pip install cdsapi
 
 # Create the .cdsapirc file in the home directory
 cdsapirc_path="$HOME/.cdsapirc"
