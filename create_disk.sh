@@ -48,7 +48,6 @@ echo "  Zone: ${ZONE}"
 echo "-----------------------------------"
 
 # (1) Create a new persistent disk
-echo "1. Creating new disk '${DISK_NAME}' in zone '${ZONE}'..."
 gcloud compute disks create "${DISK_NAME}" \
     --size "${DISK_SIZE_GB}GB" \
     --type "${DISK_TYPE}" \
@@ -61,25 +60,22 @@ if [ $? -ne 0 ]; then
 fi
 
 # (2) Attach the disk to the current instance
-echo "2. Attaching disk to the current VM instance '${INSTANCE_NAME}'..."
 gcloud compute instances attach-disk "${INSTANCE_NAME}" \
     --disk "${DISK_NAME}" \
     --zone "${ZONE}" \
     --device-name "${DISK_NAME}" \
     --quiet
 
-# ... (Remaining steps are unchanged: wait, format, mkdir, fstab, mount, chown) ...
+# Wait a moment for the kernel to recognize the new disk
 sleep 5
 
 # Identify the new device path
 DEVICE_PATH="/dev/disk/by-id/google-${DISK_NAME}"
 
 # (3) Format the disk with ext4
-echo "3. Formatting disk at ${DEVICE_PATH}..."
 sudo mkfs.ext4 -F -E lazy_itable_init=0,lazy_journal_init=0 "${DEVICE_PATH}"
 
 # (4) Create the mounting point
-echo "4. Creating mount point directory '${MOUNT_POINT}'..."
 sudo mkdir -p "${MOUNT_POINT}"
 
 # Get the UUID of the new filesystem
@@ -91,7 +87,6 @@ if [ -z "$DISK_UUID" ]; then
 fi
 
 # (5) Add a line to /etc/fstab for automatic mounting
-echo "5. Adding entry to /etc/fstab..."
 FSTAB_LINE="UUID=${DISK_UUID} ${MOUNT_POINT} ext4 defaults,nofail 0 2"
 if ! grep -q "^${FSTAB_LINE}$" /etc/fstab; then
     echo "${FSTAB_LINE}" | sudo tee -a /etc/fstab > /dev/null
@@ -100,14 +95,12 @@ else
 fi
 
 # Mount all filesystems
-echo "6. Mounting all filesystems (including the new one)..."
 sudo mount -a
 
 # (7) Grant write permissions to the current user
 CURRENT_USER="${SUDO_USER}"
-echo "7. Granting ownership of '${MOUNT_POINT}' to user '${CURRENT_USER}'..."
 sudo chown -R "${CURRENT_USER}":"${CURRENT_USER}" "${MOUNT_POINT}"
 
 echo "-----------------------------------"
-echo "✅ Disk creation and mounting complete!"
+echo "Disk creation and mounting complete!"
 df -h "${MOUNT_POINT}"
