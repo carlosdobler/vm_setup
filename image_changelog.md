@@ -34,7 +34,7 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/qgis-ar
 Update and install:
 ```
 apt update && apt upgrade -y;
-apt -y --no-install-recommends install build-essential gfortran tasksel nano nethogs libudunits2-dev libgdal-dev libgeos-dev libproj-dev libnetcdf-dev git cdo netcdf-bin gdebi-core gcsfuse qgis
+apt -y --no-install-recommends install build-essential gfortran tasksel nano nethogs libudunits2-dev libgdal-dev libgeos-dev libproj-dev libnetcdf-dev git cdo netcdf-bin gdebi-core gcsfuse qgis screen
 ```
 
 Install R libraries:
