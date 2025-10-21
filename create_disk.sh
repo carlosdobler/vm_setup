@@ -38,15 +38,6 @@ if [ -z "$ZONE" ] || [ -z "$INSTANCE_NAME" ]; then
     exit 1
 fi
 
-echo "Starting disk creation and mounting process..."
-echo "  Disk Type: ${DISK_TYPE}"
-echo "  Size (GB): ${DISK_SIZE_GB}"
-echo "  Mount Point: ${MOUNT_POINT}"
-echo "  Disk Name: ${DISK_NAME}"
-echo "  VM Instance: ${INSTANCE_NAME}"
-echo "  Zone: ${ZONE}"
-echo "-----------------------------------"
-
 # (1) Create a new persistent disk
 gcloud compute disks create "${DISK_NAME}" \
     --size "${DISK_SIZE_GB}GB" \
