@@ -2,6 +2,7 @@
 # Image
 
 ### Version 1.2.2
+`config_pers_disk.sh` was replaced by a new pipeline: `create_disk.sh` + `delete_disk.sh` + `config.disk.sh`.
 Other configurations:
 - Access scopes: `Set access for each API > Compute Engine: Read Write`
 (to ensure `create_disk.sh` and `delete_disk.sh` scripts run)
