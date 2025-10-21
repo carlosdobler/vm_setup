@@ -1,9 +1,15 @@
 
 # Image
 
-### Version 1.2
-Boot disk: Ubuntu Minimal 24.04 LTS x86/64; 10 GB  
-Project-wide SSH keys blocked: `Advanced options > Security > Block project-wide SSH keys`
+### Version 1.2.2
+Other configurations:
+- Access scopes: `Set access for each API > Compute Engine: Read Write`
+(to ensure `create_disk.sh` and `delete_disk.sh` scripts run)
+
+### Version 1.2.1
+Boot disk: Ubuntu Minimal 24.04 LTS x86/64; 10 GB
+Other conifurations:
+- Project-wide SSH keys blocked: `Advanced options > Security > Block project-wide SSH keys`
 
 SSH as root (`gcloud compute ssh root@<name_of_instance>`) and run:
 
@@ -56,8 +62,9 @@ auth-stay-signed-in-days=30
 -----
 
 ### Version 1.1
-Boot disk: Ubuntu 22.04 LTS x86/64; 10 GB  
-Project-wide SSH keys blocked: `Advanced options > Security > Block project-wide SSH keys`
+Boot disk: Ubuntu 22.04 LTS x86/64; 10 GB
+Other configurations:
+- Project-wide SSH keys blocked: `Advanced options > Security > Block project-wide SSH keys`
 
 SSH as root (`gcloud compute ssh root@<name_of_instance>`) and run:
 ```
