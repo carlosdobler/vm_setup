@@ -15,7 +15,9 @@ This repo contains scripts to finalize the configuration of a Google virtual mac
 6. Configure buckets' mount points and alias: `bash vm_setup/config_buckets.sh`. Alias to mount: `mountbuckets`.
 7. Create a password to log into RStudio Server: `sudo passwd <username>`
 8. To activate the pipeline to create and delete persistent disks:
-  - `chmod +x ~/vm_setup/config_disk.sh`
-  - `source /.bashrc`
-  -  Now, to create, format, and mount a persistent disk, run `create_disk <disk type> <size in GB> <mount point>`. Disk types can be: `pd-standard`, `pd-balanced`, `pd-ssd`, or `pd-extreme`. To delete a persistent disk, run `delete_disk <mount point>`.
+  ```
+  `chmod +x ~/vm_setup/config_disk.sh`
+  `source /.bashrc`
+  ```
+  Now, to create, format, and mount a persistent disk, run `create_disk <disk type> <size in GB> <mount point>`. Disk types can be: `pd-standard`, `pd-balanced`, `pd-ssd`, or `pd-extreme`. To delete a persistent disk, run `delete_disk <mount point>`.
 
