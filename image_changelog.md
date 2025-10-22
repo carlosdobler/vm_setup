@@ -5,8 +5,6 @@
 Boot disk: Ubuntu Minimal 24.04 LTS x86/64; 10 GB
 Other conifurations:
 - Project-wide SSH keys blocked: `Advanced options > Security > Block project-wide SSH keys`
-- Access scopes: `Set access for each API > Compute Engine: Read Write`
-(to ensure `create_disk.sh` and `delete_disk.sh` scripts run)
   
 SSH as root (`gcloud compute ssh root@<name_of_instance>`) and run:
 
