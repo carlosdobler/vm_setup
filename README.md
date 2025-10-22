@@ -17,5 +17,5 @@ This repo contains scripts to finalize the configuration of a Google virtual mac
   `chmod +x ~/vm_setup/config_disk.sh`
   `source /.bashrc`
   ```
-  Now, to create, format, and mount a persistent disk, run `create_disk <disk type> <size in GB> <mount point>`. Disk types can be: `pd-standard`, `pd-balanced`, `pd-ssd`, or `pd-extreme`. To delete a persistent disk, run `delete_disk <mount point>`.
+  After this, to create, format, and mount a persistent disk, run `create_disk <disk type> <size in GB> <mount point>`. Disk types can be: `pd-standard`, `pd-balanced`, `pd-ssd`, or `pd-extreme`. To delete a persistent disk, run `delete_disk <mount point>`. Note that for this to work, the VM needs a specific configuration: under "Access scopes", select "Set access for each API" and change the "Compute Engine" option to "Read Write".
 
